@@ -1,0 +1,90 @@
+@each $list in (('pt', 'padding-top'), ('pb', 'padding-bottom'), ('pl', 'padding-left'), ('pr', 'padding-right'), ('p', 'padding'), ('mt', 'margin-top'), ('mb', 'margin-bottom'), ('ml', 'margin-left'), ('mr', 'margin-right'))
+    @for $prop from 1 through 100
+        .#{nth($list, 1)}-#{$prop}-p
+            #{nth($list, 2)}: percentage($prop/100)
+
+    @for $prop from 1 through 200
+        @if $prop % 5 == 0
+            .#{nth($list, 1)}-#{$prop}
+                #{nth($list, 2)}: #{$prop}px
+
+// Fixed position helper
+@each $list in ('top', 'bottom', 'left', 'right')
+    .fixed-#{$list}
+        position: fixed
+        #{$list}: 0
+
+// Margin and Padding helper
+@for $prop from 1 through 200
+    @if $prop % 5 == 0
+        .py-#{$prop}
+            padding:
+                top: #{$prop}px
+                bottom: #{$prop}px
+
+        .px-#{$prop}
+            padding:
+                left: #{$prop}px
+                right: #{$prop}px
+
+        .my-#{$prop}
+            margin:
+                top: #{$prop}px
+                bottom: #{$prop}px
+
+        .mx-#{$prop}
+            margin:
+                left: #{$prop}px
+                right: #{$prop}px
+
+@for $prop from 1 through 100
+    .py-#{$prop}-p
+        padding:
+            top: percentage($prop/100)
+            bottom: percentage($prop/100)
+
+    .px-#{$prop}-p
+        padding:
+            left: percentage($prop/100)
+            right: percentage($prop/100)
+
+    .my-#{$prop}-p
+        margin:
+            top: percentage($prop/100)
+            bottom: percentage($prop/100)
+
+    .mx-#{$prop}-p
+        margin:
+            left: percentage($prop/100)
+            right: percentage($prop/100)
+
+    .w-#{$prop}-p
+        max-width: percentage($prop/100)
+
+    .h-#{$prop}-p
+        max-height: percentage($prop/100)
+
+// Width and Height helper
+@for $prop from 1 through 1000
+    @if $prop % 50 == 0 or $prop % 20 == 0
+        .w-#{$prop}
+            max-width: #{$prop}px !important
+
+        .h-#{$prop}
+            max-height: #{$prop}px !important
+
+// Border Radius helper
+@for $prop from 0 through 50
+    .b-radius-#{$prop}
+        -webkit-border-radius: #{$prop}px
+        -moz-border-radius: #{$prop}px
+        border-radius: #{$prop}px
+
+.hide
+    display: none
+    visibility: hidden
+
+.vertically-center
+    position: relative
+    top: 50%
+    transform: translateY(-50%)
